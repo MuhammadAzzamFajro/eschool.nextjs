@@ -72,41 +72,73 @@ export default function LandingPage() {
                 </div>
 
                 <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
-                    <div className="text-center max-w-3xl mx-auto">
-                        <div className="inline-flex items-center gap-2 rounded-full border bg-background/80 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-muted-foreground mb-8 shadow-sm">
-                            <Zap className="h-3.5 w-3.5 text-primary" />
-                            Platform Manajemen Sekolah Modern
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div className="text-left max-w-3xl">
+                            <div className="inline-flex items-center gap-2 rounded-full border bg-background/80 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-muted-foreground mb-8 shadow-sm">
+                                <Zap className="h-3.5 w-3.5 text-primary" />
+                                Platform Manajemen Sekolah Modern
+                            </div>
+
+                            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+                                Kelola Sekolah Anda{" "}
+                                <span className="relative">
+                                    <span className="relative z-10 text-primary">Lebih Mudah</span>
+                                    <span className="absolute bottom-1 left-0 right-0 h-3 bg-primary/15 rounded-sm -z-0" />
+                                </span>{" "}
+                                dengan eSchool
+                            </h1>
+
+                            <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                                Sistem manajemen sekolah digital yang terintegrasi untuk
+                                mengelola administrasi, akademik, keuangan, dan komunikasi —
+                                semua dalam satu platform.
+                            </p>
+
+                            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+                                <Button
+                                    size="lg"
+                                    asChild
+                                    className="shadow-lg shadow-primary/25 text-base px-8"
+                                >
+                                    <Link href="/register">
+                                        Mulai Gratis
+                                        <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Link>
+                                </Button>
+                                <Button size="lg" variant="outline" asChild className="text-base px-8">
+                                    <Link href="#fitur">Lihat Fitur</Link>
+                                </Button>
+                            </div>
                         </div>
 
-                        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-                            Kelola Sekolah Anda{" "}
-                            <span className="relative">
-                                <span className="relative z-10 text-primary">Lebih Mudah</span>
-                                <span className="absolute bottom-1 left-0 right-0 h-3 bg-primary/15 rounded-sm -z-0" />
-                            </span>{" "}
-                            dengan eSchool
-                        </h1>
+                        <div className="relative hidden lg:block">
+                            <div className="relative z-10 animate-in fade-in slide-in-from-right-8 duration-1000">
+                                <img
+                                    src="/hero-img.png"
+                                    alt="eSchool Hero"
+                                    className="w-full h-auto drop-shadow-2xl rounded-2xl"
+                                />
 
-                        <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                            Sistem manajemen sekolah digital yang terintegrasi untuk
-                            mengelola administrasi, akademik, keuangan, dan komunikasi —
-                            semua dalam satu platform.
-                        </p>
+                                {/* Floating elements like Laravel version */}
+                                <div className="absolute -top-6 -left-6 bg-background p-4 rounded-2xl shadow-xl border animate-bounce duration-[3000ms]">
+                                    <div className="flex items-center gap-3">
+                                        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                                            <img src="/user-avatar.png" alt="" className="h-8 w-8 rounded-full" />
+                                        </div>
+                                        <div>
+                                            <p className="text-xs font-bold">Top Rated</p>
+                                            <p className="text-[10px] text-muted-foreground">Sistem Terbaik</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button
-                                size="lg"
-                                asChild
-                                className="shadow-lg shadow-primary/25 text-base px-8"
-                            >
-                                <Link href="/register">
-                                    Mulai Gratis
-                                    <ArrowRight className="ml-2 h-4 w-4" />
-                                </Link>
-                            </Button>
-                            <Button size="lg" variant="outline" asChild className="text-base px-8">
-                                <Link href="#fitur">Lihat Fitur</Link>
-                            </Button>
+                                <div className="absolute -bottom-6 right-10 bg-background p-4 rounded-xl shadow-xl border">
+                                    <p className="text-sm font-bold text-primary">eSchool SaaS</p>
+                                </div>
+                            </div>
+
+                            {/* Decorative Blur */}
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full w-full bg-primary/10 blur-[100px] -z-10 rounded-full" />
                         </div>
                     </div>
                 </div>
@@ -218,16 +250,12 @@ export default function LandingPage() {
                         </div>
 
                         <div className="relative">
-                            <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-transparent p-8 flex items-center justify-center">
-                                <div className="text-center space-y-4">
-                                    <div className="flex h-24 w-24 mx-auto items-center justify-center rounded-3xl bg-primary text-primary-foreground shadow-2xl shadow-primary/30">
-                                        <GraduationCap className="h-12 w-12" />
-                                    </div>
-                                    <h3 className="text-2xl font-bold">eSchool</h3>
-                                    <p className="text-muted-foreground text-sm">
-                                        Sistem Manajemen Sekolah Digital
-                                    </p>
-                                </div>
+                            <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-transparent p-4 flex items-center justify-center overflow-hidden">
+                                <img
+                                    src="/why-best.png"
+                                    alt="Why Choose eSchool"
+                                    className="w-full h-full object-contain rounded-xl drop-shadow-xl"
+                                />
                             </div>
                         </div>
                     </div>
@@ -237,36 +265,34 @@ export default function LandingPage() {
             {/* CTA */}
             <section id="kontak" className="py-24 sm:py-32">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="relative rounded-3xl bg-primary px-8 py-16 text-center text-primary-foreground overflow-hidden">
+                    <div className="relative rounded-3xl bg-primary px-8 py-16 overflow-hidden">
                         <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%)] bg-[size:200px_200px]" />
-                        <div className="relative z-10">
-                            <h2 className="text-3xl font-bold sm:text-4xl">
-                                Siap Memulai Transformasi Digital?
-                            </h2>
-                            <p className="mt-4 max-w-2xl mx-auto opacity-90">
-                                Bergabung dengan ratusan sekolah yang sudah menggunakan eSchool
-                                untuk mengelola administrasi mereka secara efisien.
-                            </p>
-                            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-                                <Button
-                                    size="lg"
-                                    variant="secondary"
-                                    asChild
-                                    className="text-base px-8"
-                                >
-                                    <Link href="/register">
-                                        Daftar Sekarang
-                                        <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Link>
-                                </Button>
-                                <Button
-                                    size="lg"
-                                    variant="outline"
-                                    asChild
-                                    className="text-base px-8 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
-                                >
-                                    <Link href="/login">Sudah Punya Akun</Link>
-                                </Button>
+
+                        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            <div className="order-2 lg:order-1 text-center lg:text-left">
+                                <h2 className="text-3xl font-bold sm:text-4xl text-primary-foreground">
+                                    Download Aplikasi Sekarang
+                                </h2>
+                                <p className="mt-4 max-w-2xl opacity-90 text-primary-foreground">
+                                    Nikmati kemudahan akses eSchool langsung dari smartphone Anda.
+                                    Kelola tugas, jadwal, dan komunikasi di mana saja dan kapan saja.
+                                </p>
+                                <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                    <a href="#" className="transition-transform hover:scale-105 active:scale-95">
+                                        <img src="/google-play.png" alt="Google Play" className="h-12 w-auto" />
+                                    </a>
+                                    <a href="#" className="transition-transform hover:scale-105 active:scale-95">
+                                        <img src="/app-store.png" alt="App Store" className="h-12 w-auto" />
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className="order-1 lg:order-2 flex justify-center">
+                                <img
+                                    src="/our-app.png"
+                                    alt="eSchool Mobile App"
+                                    className="max-h-[400px] w-auto drop-shadow-2xl"
+                                />
                             </div>
                         </div>
                     </div>

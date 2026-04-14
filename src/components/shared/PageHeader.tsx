@@ -24,6 +24,7 @@ interface PageHeaderProps {
     actionHref?: string;
     actionIcon?: LucideIcon;
     onAction?: () => void;
+    action?: React.ReactNode;
     children?: React.ReactNode;
 }
 
@@ -35,6 +36,7 @@ export function PageHeader({
     actionHref,
     actionIcon: ActionIcon = Plus,
     onAction,
+    action,
     children,
 }: PageHeaderProps) {
     return (
@@ -71,6 +73,7 @@ export function PageHeader({
                 </div>
 
                 <div className="flex items-center gap-2 shrink-0">
+                    {action}
                     {children}
                     {(actionLabel && (actionHref || onAction)) && (
                         <Button

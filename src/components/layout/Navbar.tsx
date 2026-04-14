@@ -13,12 +13,11 @@ export function Navbar() {
             <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2.5 group">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-md shadow-primary/25 transition-transform group-hover:scale-105">
-                        <GraduationCap className="h-5 w-5" />
-                    </div>
-                    <span className="text-xl font-bold tracking-tight">
-                        e<span className="text-primary">School</span>
-                    </span>
+                    <img
+                        src="/logo.svg"
+                        alt="eSchool Logo"
+                        className="h-9 w-auto transition-transform group-hover:scale-105"
+                    />
                 </Link>
 
                 {/* Desktop Nav */}

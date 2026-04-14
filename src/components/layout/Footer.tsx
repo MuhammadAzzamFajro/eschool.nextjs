@@ -8,13 +8,12 @@ export function Footer() {
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
                     {/* Brand */}
                     <div className="col-span-1 md:col-span-2">
-                        <Link href="/" className="flex items-center gap-2.5 mb-4">
-                            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-md shadow-primary/25">
-                                <GraduationCap className="h-5 w-5" />
-                            </div>
-                            <span className="text-xl font-bold tracking-tight">
-                                e<span className="text-primary">School</span>
-                            </span>
+                        <Link href="/" className="flex items-center gap-2.5 mb-4 group">
+                            <img
+                                src="/logo.svg"
+                                alt="eSchool Logo"
+                                className="h-8 w-auto transition-transform group-hover:scale-105"
+                            />
                         </Link>
                         <p className="text-sm text-muted-foreground max-w-md">
                             Sistem Manajemen Sekolah digital yang membantu mengelola

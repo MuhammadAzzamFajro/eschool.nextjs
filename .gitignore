@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large Source & Archives
+laravel.rar
+laravel_source/
+/tmp/
