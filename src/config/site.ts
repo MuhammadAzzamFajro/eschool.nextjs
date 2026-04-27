@@ -1,9 +1,9 @@
 export const siteConfig = {
-  name: "eSchool",
+  name: "SIAKAD PLUS",
   description: "Sistem Manajemen Sekolah - Platform digital untuk mengelola administrasi sekolah secara efisien",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   ogImage: "/og.png",
-  creator: "eSchool Team",
+  creator: "SIAKAD PLUS Team",
   keywords: [
     "sekolah",
     "manajemen sekolah",

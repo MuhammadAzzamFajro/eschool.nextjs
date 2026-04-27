@@ -11,7 +11,7 @@ export function Footer() {
                         <Link href="/" className="flex items-center gap-2.5 mb-4 group">
                             <img
                                 src="/logo.svg"
-                                alt="eSchool Logo"
+                                alt="SIAKAD PLUS Logo"
                                 className="h-8 w-auto transition-transform group-hover:scale-105"
                             />
                         </Link>
@@ -78,7 +78,7 @@ export function Footer() {
 
                 <div className="mt-8 border-t pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <p className="text-xs text-muted-foreground">
-                        &copy; {new Date().getFullYear()} eSchool. Hak cipta dilindungi.
+                        &copy; {new Date().getFullYear()} SIAKAD PLUS. Hak cipta dilindungi.
                     </p>
                     <p className="text-xs text-muted-foreground">
                         Dibuat dengan ❤️ untuk pendidikan Indonesia

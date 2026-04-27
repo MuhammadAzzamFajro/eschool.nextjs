@@ -63,7 +63,7 @@ export default function LoginPage() {
                     </div>
                     <div>
                         <CardTitle className="text-2xl font-bold">
-                            Masuk ke eSchool
+                            Masuk ke SIAKAD PLUS
                         </CardTitle>
                         <CardDescription className="mt-1.5">
                             Masukkan email dan password Anda untuk melanjutkan

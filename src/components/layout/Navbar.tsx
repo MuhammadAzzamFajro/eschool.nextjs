@@ -15,7 +15,7 @@ export function Navbar() {
                 <Link href="/" className="flex items-center gap-2.5 group">
                     <img
                         src="/logo.svg"
-                        alt="eSchool Logo"
+                        alt="SIAKAD PLUS Logo"
                         className="h-9 w-auto transition-transform group-hover:scale-105"
                     />
                 </Link>

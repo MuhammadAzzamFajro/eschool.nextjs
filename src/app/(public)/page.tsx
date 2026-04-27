@@ -53,10 +53,9 @@ const features = [
 ];
 
 const stats = [
-    { value: "500+", label: "Sekolah" },
-    { value: "50K+", label: "Pengguna Aktif" },
-    { value: "99.9%", label: "Uptime" },
-    { value: "24/7", label: "Dukungan" },
+    { value: "85+", label: "Sekolah" },
+    { value: "1250+", label: "Guru" },
+    { value: "50K+", label: "Siswa" },
 ];
 
 export default function LandingPage() {
@@ -76,22 +75,15 @@ export default function LandingPage() {
                         <div className="text-left max-w-3xl">
                             <div className="inline-flex items-center gap-2 rounded-full border bg-background/80 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-muted-foreground mb-8 shadow-sm">
                                 <Zap className="h-3.5 w-3.5 text-primary" />
-                                Platform Manajemen Sekolah Modern
+                                Diakses sekolah, siswa dan orangtua
                             </div>
 
                             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-                                Kelola Sekolah Anda{" "}
-                                <span className="relative">
-                                    <span className="relative z-10 text-primary">Lebih Mudah</span>
-                                    <span className="absolute bottom-1 left-0 right-0 h-3 bg-primary/15 rounded-sm -z-0" />
-                                </span>{" "}
-                                dengan eSchool
+                                SIAKAD PLUS - <span className="text-primary">Software Manajemen Sekolah</span>
                             </h1>
 
                             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                                Sistem manajemen sekolah digital yang terintegrasi untuk
-                                mengelola administrasi, akademik, keuangan, dan komunikasi —
-                                semua dalam satu platform.
+                                Software manajemen sekolah terbaik dan termurah di Indonesia. Fitur lengkap dan sesuai kebutuhan. Tampilan menarik dan mudah digunakan. Keamanan data terjamin.
                             </p>
 
                             <div className="mt-10 flex flex-col sm:flex-row gap-4">
@@ -101,7 +93,7 @@ export default function LandingPage() {
                                     className="shadow-lg shadow-primary/25 text-base px-8"
                                 >
                                     <Link href="/register">
-                                        Mulai Gratis
+                                        Daftarkan Sekolah Anda
                                         <ArrowRight className="ml-2 h-4 w-4" />
                                     </Link>
                                 </Button>
@@ -115,7 +107,7 @@ export default function LandingPage() {
                             <div className="relative z-10 animate-in fade-in slide-in-from-right-8 duration-1000">
                                 <img
                                     src="/hero-img.png"
-                                    alt="eSchool Hero"
+                                    alt="SIAKAD PLUS Hero"
                                     className="w-full h-auto drop-shadow-2xl rounded-2xl"
                                 />
 
@@ -133,7 +125,7 @@ export default function LandingPage() {
                                 </div>
 
                                 <div className="absolute -bottom-6 right-10 bg-background p-4 rounded-xl shadow-xl border">
-                                    <p className="text-sm font-bold text-primary">eSchool SaaS</p>
+                                    <p className="text-sm font-bold text-primary">SIAKAD PLUS</p>
                                 </div>
                             </div>
 
@@ -147,13 +139,13 @@ export default function LandingPage() {
             {/* Stats */}
             <section className="border-y bg-muted/30">
                 <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+                    <div className="flex justify-center items-center gap-12 md:gap-24">
                         {stats.map((stat) => (
                             <div key={stat.label} className="text-center">
-                                <p className="text-3xl font-extrabold text-primary">
+                                <p className="text-4xl font-extrabold text-primary">
                                     {stat.value}
                                 </p>
-                                <p className="mt-1 text-sm text-muted-foreground font-medium">
+                                <p className="mt-2 text-base text-muted-foreground font-medium uppercase tracking-wider">
                                     {stat.label}
                                 </p>
                             </div>
@@ -167,12 +159,11 @@ export default function LandingPage() {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="text-center max-w-2xl mx-auto mb-16">
                         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                            Fitur Lengkap untuk{" "}
-                            <span className="text-primary">Sekolah Modern</span>
+                            Fitur &amp; Keunggulan{" "}
+                            <span className="text-primary">SIAKAD PLUS</span>
                         </h2>
                         <p className="mt-4 text-muted-foreground leading-relaxed">
-                            Semua yang Anda butuhkan untuk mengelola sekolah secara efisien,
-                            dari manajemen data hingga laporan analitik.
+                            Beragam fitur untuk mendukung ekosistem digital sekolah secara efisien.
                         </p>
                     </div>
 
@@ -204,31 +195,32 @@ export default function LandingPage() {
                     <div className="grid gap-12 lg:grid-cols-2 items-center">
                         <div>
                             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                                Mengapa Memilih{" "}
-                                <span className="text-primary">eSchool</span>?
+                                Kenapa Pilih{" "}
+                                <span className="text-primary">SIAKAD PLUS</span>?
                             </h2>
+                            <p className="mt-4 text-primary font-medium text-lg">
+                                Gaya modern dan unik
+                            </p>
                             <p className="mt-4 text-muted-foreground leading-relaxed">
-                                eSchool dirancang khusus untuk kebutuhan sekolah di Indonesia.
-                                Dengan antarmuka yang mudah digunakan dan fitur yang lengkap,
-                                eSchool membantu sekolah bertransformasi digital.
+                                SIAKAD PLUS menawarkan teknologi canggih, mudah digunakan, dan solusi personal. Menyederhanakan komunikasi, menyederhanakan tugas administratif, dan meningkatkan pengalaman pendidikan bagi semua pemangku kepentingan. Dengan SIAKAD PLUS, keunggulan dalam manajemen pendidikan akan terjamin.
                             </p>
 
                             <div className="mt-8 space-y-4">
                                 {[
                                     {
+                                        icon: CreditCard,
+                                        title: "Affordable price",
+                                        desc: "Harga yang terjangkau untuk semua kalangan",
+                                    },
+                                    {
+                                        icon: ClipboardCheck,
+                                        title: "Easy to manage admin panel",
+                                        desc: "Pengelolaan panel admin mudah dan praktis",
+                                    },
+                                    {
                                         icon: Shield,
-                                        title: "Aman & Terpercaya",
-                                        desc: "Data terenkripsi dengan standar keamanan enterprise",
-                                    },
-                                    {
-                                        icon: Zap,
-                                        title: "Cepat & Responsif",
-                                        desc: "Performa optimal di semua perangkat dan jaringan",
-                                    },
-                                    {
-                                        icon: GraduationCap,
-                                        title: "Khusus Pendidikan",
-                                        desc: "Dirancang sesuai kebutuhan dan kurikulum Indonesia",
+                                        title: "Data Security",
+                                        desc: "Tingkat keamanan data yang terjamin kuat",
                                     },
                                 ].map((item) => (
                                     <div
@@ -253,7 +245,7 @@ export default function LandingPage() {
                             <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-transparent p-4 flex items-center justify-center overflow-hidden">
                                 <img
                                     src="/why-best.png"
-                                    alt="Why Choose eSchool"
+                                    alt="Why Choose SIAKAD PLUS"
                                     className="w-full h-full object-contain rounded-xl drop-shadow-xl"
                                 />
                             </div>
@@ -274,7 +266,7 @@ export default function LandingPage() {
                                     Download Aplikasi Sekarang
                                 </h2>
                                 <p className="mt-4 max-w-2xl opacity-90 text-primary-foreground">
-                                    Nikmati kemudahan akses eSchool langsung dari smartphone Anda.
+                                    Nikmati kemudahan akses SIAKAD PLUS langsung dari smartphone Anda.
                                     Kelola tugas, jadwal, dan komunikasi di mana saja dan kapan saja.
                                 </p>
                                 <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -290,7 +282,7 @@ export default function LandingPage() {
                             <div className="order-1 lg:order-2 flex justify-center">
                                 <img
                                     src="/our-app.png"
-                                    alt="eSchool Mobile App"
+                                    alt="SIAKAD PLUS Mobile App"
                                     className="max-h-[400px] w-auto drop-shadow-2xl"
                                 />
                             </div>

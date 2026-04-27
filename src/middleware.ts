@@ -32,9 +32,15 @@ export async function middleware(request: NextRequest) {
     // IMPORTANT: Do not add logic between createServerClient and
     // supabase.auth.getUser(). A simple mistake could make it very hard to debug
     // issues with users being randomly logged out.
-    const {
-        data: { user },
-    } = await supabase.auth.getUser();
+    // Wrapped in try/catch to prevent middleware crash if Supabase is unreachable.
+    let user = null;
+    try {
+        const { data } = await supabase.auth.getUser();
+        user = data.user;
+    } catch {
+        // If Supabase is unreachable, treat user as unauthenticated and continue
+        user = null;
+    }
 
     const isAuthPage =
         request.nextUrl.pathname === "/login" ||
@@ -59,7 +65,11 @@ export async function middleware(request: NextRequest) {
         request.nextUrl.pathname.startsWith("/galeri") ||
         request.nextUrl.pathname.startsWith("/kartu-id") ||
         request.nextUrl.pathname.startsWith("/sertifikat") ||
-        request.nextUrl.pathname.startsWith("/pengaturan");
+        request.nextUrl.pathname.startsWith("/pengaturan") ||
+        request.nextUrl.pathname.startsWith("/absensi") ||
+        request.nextUrl.pathname.startsWith("/kurikulum") ||
+        request.nextUrl.pathname.startsWith("/kesiswaan") ||
+        request.nextUrl.pathname.startsWith("/notifikasi");
 
     // Redirect authenticated users away from login/register
     if (user && isAuthPage) {

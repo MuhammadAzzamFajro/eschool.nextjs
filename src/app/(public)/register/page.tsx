@@ -94,7 +94,7 @@ export default function RegisterPage() {
                     <div>
                         <CardTitle className="text-2xl font-bold">Daftar Akun</CardTitle>
                         <CardDescription className="mt-1.5">
-                            Buat akun baru untuk mengakses eSchool
+                            Buat akun baru untuk mengakses SIAKAD PLUS
                         </CardDescription>
                     </div>
                 </CardHeader>
