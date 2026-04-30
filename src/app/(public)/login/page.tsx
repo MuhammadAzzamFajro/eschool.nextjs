@@ -27,6 +27,7 @@ export default function LoginPage() {
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors },
     } = useForm<LoginInput>({
         resolver: zodResolver(loginSchema),
@@ -54,20 +55,10 @@ export default function LoginPage() {
                 <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
             </div>
 
-            <Card className="w-full max-w-md border-0 shadow-xl shadow-primary/5">
+            <Card className="w-full max-w-lg border-0 shadow-xl shadow-primary/5 sm:p-4">
                 <CardHeader className="text-center space-y-4">
-                    <div className="flex justify-center">
-                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/30">
-                            <GraduationCap className="h-7 w-7" />
-                        </div>
-                    </div>
-                    <div>
-                        <CardTitle className="text-2xl font-bold">
-                            Masuk ke SIAKAD PLUS
-                        </CardTitle>
-                        <CardDescription className="mt-1.5">
-                            Masukkan email dan password Anda untuk melanjutkan
-                        </CardDescription>
+                    <div className="flex justify-center mb-2">
+                        <img src="/vertical-logo.svg" alt="eSchool Logo" className="h-24 w-auto" />
                     </div>
                 </CardHeader>
 
@@ -136,15 +127,6 @@ export default function LoginPage() {
                                 "Masuk"
                             )}
                         </Button>
-                        <p className="text-sm text-muted-foreground text-center">
-                            Belum punya akun?{" "}
-                            <Link
-                                href="/register"
-                                className="font-medium text-primary hover:underline"
-                            >
-                                Daftar sekarang
-                            </Link>
-                        </p>
                     </CardFooter>
                 </form>
             </Card>

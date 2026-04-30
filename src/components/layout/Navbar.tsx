@@ -15,7 +15,7 @@ export function Navbar() {
                 <Link href="/" className="flex items-center gap-2.5 group">
                     <img
                         src="/logo.svg"
-                        alt="SIAKAD PLUS Logo"
+                        alt="eSCHOOL Logo"
                         className="h-9 w-auto transition-transform group-hover:scale-105"
                     />
                 </Link>
@@ -38,7 +38,13 @@ export function Navbar() {
                         href="#tentang"
                         className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                     >
-                        Tentang
+                        Tentang Kami
+                    </Link>
+                    <Link
+                        href="#harga"
+                        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                        Harga
                     </Link>
                     <Link
                         href="#kontak"
@@ -46,18 +52,23 @@ export function Navbar() {
                     >
                         Kontak
                     </Link>
+                    <Link
+                        href="#bantuan"
+                        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                        Bantuan
+                    </Link>
                 </nav>
 
                 {/* Desktop CTA */}
                 <div className="hidden md:flex items-center gap-3">
-                    <Button variant="ghost" size="sm" asChild>
+                    <Button size="sm" asChild className="shadow-md shadow-primary/25 bg-primary text-primary-foreground hover:bg-primary/90">
                         <Link href="/login">
-                            <LogIn className="h-4 w-4 mr-2" />
-                            Masuk
+                            Login
                         </Link>
                     </Button>
-                    <Button size="sm" asChild className="shadow-md shadow-primary/25">
-                        <Link href="/register">Daftar</Link>
+                    <Button size="sm" asChild className="shadow-md shadow-primary/25 bg-primary text-primary-foreground hover:bg-primary/90">
+                        <Link href="#harga">Uji Coba</Link>
                     </Button>
                 </div>
 
@@ -99,7 +110,14 @@ export function Navbar() {
                             className="block py-2 text-sm font-medium text-muted-foreground"
                             onClick={() => setMobileOpen(false)}
                         >
-                            Tentang
+                            Tentang Kami
+                        </Link>
+                        <Link
+                            href="#harga"
+                            className="block py-2 text-sm font-medium text-muted-foreground"
+                            onClick={() => setMobileOpen(false)}
+                        >
+                            Harga
                         </Link>
                         <Link
                             href="#kontak"
@@ -108,12 +126,19 @@ export function Navbar() {
                         >
                             Kontak
                         </Link>
+                        <Link
+                            href="#bantuan"
+                            className="block py-2 text-sm font-medium text-muted-foreground"
+                            onClick={() => setMobileOpen(false)}
+                        >
+                            Bantuan
+                        </Link>
                         <div className="pt-3 border-t space-y-2">
-                            <Button variant="outline" className="w-full" asChild>
-                                <Link href="/login">Masuk</Link>
+                            <Button className="w-full bg-primary text-primary-foreground" asChild>
+                                <Link href="/login">Login</Link>
                             </Button>
-                            <Button className="w-full" asChild>
-                                <Link href="/register">Daftar</Link>
+                            <Button className="w-full bg-primary text-primary-foreground" asChild>
+                                <Link href="#harga">Uji Coba</Link>
                             </Button>
                         </div>
                     </div>
