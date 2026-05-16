@@ -103,7 +103,15 @@ const permissions: Record<Role, Partial<Record<Resource, Action[]>>> = {
     staf: {
         dashboard: ["view"],
         siswa: ["view"],
+        guru: ["view"],
+        kelas: ["view"],
+        pelajaran: ["view"],
+        jadwal: ["view"],
+        kehadiran: ["view"],
+        ujian: ["view"],
+        penugasan: ["view"],
         pengumuman: ["view"],
+        akademik: ["view"],
         galeri: ["view", "create"],
     },
 };

@@ -13,50 +13,58 @@ import {
     Calendar,
     ClipboardCheck,
     CreditCard,
+    UserCheck,
 } from "lucide-react";
+import { getDashboardStats } from "@/services/profile.service";
 
-const statsCards = [
-    {
-        title: "Total Siswa",
-        value: "1,245",
-        change: "+12%",
-        icon: GraduationCap,
-        color: "text-blue-600 bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400",
-    },
-    {
-        title: "Total Guru",
-        value: "86",
-        change: "+3%",
-        icon: Users,
-        color:
-            "text-emerald-600 bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-400",
-    },
-    {
-        title: "Total Staf",
-        value: "32",
-        change: "+5%",
-        icon: UserCog,
-        color:
-            "text-purple-600 bg-purple-100 dark:bg-purple-900/30 dark:text-purple-400",
-    },
-    {
-        title: "Kelas Aktif",
-        value: "42",
-        change: "0%",
-        icon: BookOpen,
-        color:
-            "text-amber-600 bg-amber-100 dark:bg-amber-900/30 dark:text-amber-400",
-    },
-];
+export default async function DashboardPage() {
+    const stats = await getDashboardStats();
 
-const quickActions = [
-    { title: "Tambah Siswa", icon: GraduationCap, href: "/siswa/create" },
-    { title: "Kehadiran Hari Ini", icon: ClipboardCheck, href: "/kehadiran" },
-    { title: "Jadwal Pelajaran", icon: Calendar, href: "/jadwal" },
-    { title: "Kelola Biaya", icon: CreditCard, href: "/biaya" },
-];
+    const statsCards = [
+        {
+            title: "Total Pengguna",
+            value: stats.totalUsers.toLocaleString(),
+            change: `+${stats.newThisMonth}`,
+            icon: Users,
+            color: "text-blue-600 bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400",
+            description: "Baru bulan ini"
+        },
+        {
+            title: "Total Guru",
+            value: stats.totalGuru.toLocaleString(),
+            change: "Aktif",
+            icon: UserCheck,
+            color:
+                "text-emerald-600 bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-400",
+            description: "Tenaga Pengajar"
+        },
+        {
+            title: "Total Staf",
+            value: stats.totalStaf.toLocaleString(),
+            change: "Aktif",
+            icon: UserCog,
+            color:
+                "text-purple-600 bg-purple-100 dark:bg-purple-900/30 dark:text-purple-400",
+            description: "Administrasi"
+        },
+        {
+            title: "Total Admin",
+            value: stats.totalAdmin.toLocaleString(),
+            change: "Aktif",
+            icon: BookOpen,
+            color:
+                "text-amber-600 bg-amber-100 dark:bg-amber-900/30 dark:text-amber-400",
+            description: "Pengelola"
+        },
+    ];
 
-export default function DashboardPage() {
+    const quickActions = [
+        { title: "Profil Saya", icon: UserCog, href: "/profile" },
+        { title: "Kehadiran Hari Ini", icon: ClipboardCheck, href: "/absensi/add" },
+        { title: "Jadwal Pelajaran", icon: Calendar, href: "/jadwal" },
+        { title: "Data Guru", icon: Users, href: "/guru" },
+    ];
+
     return (
         <div className="space-y-6">
             {/* Header */}
@@ -65,7 +73,7 @@ export default function DashboardPage() {
                     Dashboard
                 </h1>
                 <p className="text-muted-foreground mt-1">
-                    Selamat datang kembali! Berikut ringkasan data sekolah Anda.
+                    Selamat datang kembali! Berikut ringkasan data sekolah Anda secara real-time.
                 </p>
             </div>
 
@@ -94,7 +102,7 @@ export default function DashboardPage() {
                                     {stat.change}
                                 </span>
                                 <span className="text-xs text-muted-foreground">
-                                    dari bulan lalu
+                                    {stat.description}
                                 </span>
                             </div>
                         </CardContent>
@@ -102,78 +110,38 @@ export default function DashboardPage() {
                 ))}
             </div>
 
-            {/* Quick Actions */}
-            <div>
-                <h2 className="text-lg font-semibold mb-4">Aksi Cepat</h2>
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                    {quickActions.map((action) => (
-                        <a key={action.title} href={action.href}>
-                            <Card className="border-0 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all cursor-pointer group">
-                                <CardContent className="flex items-center gap-3 p-4">
-                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                                        <action.icon className="h-5 w-5" />
-                                    </div>
-                                    <span className="text-sm font-medium">{action.title}</span>
-                                </CardContent>
-                            </Card>
-                        </a>
-                    ))}
-                </div>
-            </div>
-
-            {/* Content Grid */}
-            <div className="grid gap-6 lg:grid-cols-2">
-                {/* Recent Activity */}
-                <Card className="border-0 shadow-sm">
-                    <CardHeader>
-                        <CardTitle className="text-lg">Aktivitas Terbaru</CardTitle>
+            {/* Main Data Content */}
+            <div className="grid gap-6 lg:grid-cols-3">
+                {/* Attendance Chart Mockup */}
+                <Card className="lg:col-span-2 border-0 shadow-sm">
+                    <CardHeader className="flex flex-row items-center justify-between">
+                        <div>
+                            <CardTitle className="text-lg">Tren Kehadiran Siswa</CardTitle>
+                            <p className="text-xs text-muted-foreground">Persentase kehadiran dalam 7 hari terakhir</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-1">
+                                <div className="h-2 w-2 rounded-full bg-primary" />
+                                <span className="text-[10px] text-muted-foreground">Hadir</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <div className="h-2 w-2 rounded-full bg-destructive" />
+                                <span className="text-[10px] text-muted-foreground">Absen</span>
+                            </div>
+                        </div>
                     </CardHeader>
                     <CardContent>
-                        <div className="space-y-4">
-                            {[
-                                {
-                                    action: "menambahkan siswa baru",
-                                    user: "Admin",
-                                    time: "5 menit lalu",
-                                },
-                                {
-                                    action: "mengupdate jadwal pelajaran",
-                                    user: "Bu Sari",
-                                    time: "30 menit lalu",
-                                },
-                                {
-                                    action: "mencatat kehadiran kelas 10A",
-                                    user: "Pak Budi",
-                                    time: "1 jam lalu",
-                                },
-                                {
-                                    action: "menambahkan pengumuman baru",
-                                    user: "Admin",
-                                    time: "2 jam lalu",
-                                },
-                                {
-                                    action: "mengupload nilai ujian",
-                                    user: "Bu Dewi",
-                                    time: "3 jam lalu",
-                                },
-                            ].map((item, i) => (
-                                <div
-                                    key={i}
-                                    className="flex items-center gap-3 text-sm"
-                                >
-                                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                                        {item.user[0]}
+                        <div className="h-[240px] w-full flex items-end justify-between gap-2 px-2 pt-4">
+                            {[95, 92, 88, 94, 91, 96, 98].map((val, i) => (
+                                <div key={i} className="flex-1 flex flex-col items-center gap-2 group">
+                                    <div className="w-full relative bg-muted rounded-t-sm overflow-hidden h-full">
+                                        <div 
+                                            className="absolute bottom-0 left-0 w-full bg-primary/80 group-hover:bg-primary transition-all duration-500" 
+                                            style={{ height: `${val}%` }} 
+                                        />
                                     </div>
-                                    <div className="flex-1 min-w-0">
-                                        <p>
-                                            <span className="font-medium">{item.user}</span>{" "}
-                                            <span className="text-muted-foreground">
-                                                {item.action}
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <span className="text-xs text-muted-foreground whitespace-nowrap">
-                                        {item.time}
+                                    <span className="text-[10px] text-muted-foreground">
+                                        {["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"][i]}
                                     </span>
                                 </div>
                             ))}
@@ -181,63 +149,53 @@ export default function DashboardPage() {
                     </CardContent>
                 </Card>
 
-                {/* Upcoming Schedule */}
-                <Card className="border-0 shadow-sm">
-                    <CardHeader>
-                        <CardTitle className="text-lg">Jadwal Hari Ini</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="space-y-3">
-                            {[
-                                {
-                                    time: "07:30 - 08:30",
-                                    subject: "Matematika",
-                                    class: "Kelas 10A",
-                                    teacher: "Pak Budi",
-                                },
-                                {
-                                    time: "08:30 - 09:30",
-                                    subject: "Bahasa Indonesia",
-                                    class: "Kelas 10A",
-                                    teacher: "Bu Sari",
-                                },
-                                {
-                                    time: "10:00 - 11:00",
-                                    subject: "Fisika",
-                                    class: "Kelas 11B",
-                                    teacher: "Pak Ahmad",
-                                },
-                                {
-                                    time: "11:00 - 12:00",
-                                    subject: "Bahasa Inggris",
-                                    class: "Kelas 11B",
-                                    teacher: "Bu Dewi",
-                                },
-                                {
-                                    time: "13:00 - 14:00",
-                                    subject: "Kimia",
-                                    class: "Kelas 12A",
-                                    teacher: "Bu Rina",
-                                },
-                            ].map((item, i) => (
-                                <div
-                                    key={i}
-                                    className="flex items-center gap-4 rounded-lg border p-3"
-                                >
-                                    <div className="text-xs font-mono text-primary font-medium whitespace-nowrap">
-                                        {item.time}
+                {/* System & Activity Feed */}
+                <div className="space-y-6">
+                    <Card className="border-0 shadow-sm">
+                        <CardHeader className="pb-3">
+                            <CardTitle className="text-lg">Aktivitas Terkini</CardTitle>
+                        </CardHeader>
+                        <CardContent className="px-0">
+                            <div className="space-y-4 px-6">
+                                {[
+                                    { user: "Admin", action: "Input nilai Matematika", time: "5 menit lalu", icon: BookOpen },
+                                    { user: "Sistem", action: "Sinkronisasi data", time: "1 jam lalu", icon: TrendingUp },
+                                    { user: "Budi", action: "Update profil", time: "2 jam lalu", icon: UserCog },
+                                ].map((item, i) => (
+                                    <div key={i} className="flex items-start gap-3 text-sm">
+                                        <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center shrink-0">
+                                            <item.icon className="h-4 w-4 text-muted-foreground" />
+                                        </div>
+                                        <div>
+                                            <p className="font-medium">{item.user}</p>
+                                            <p className="text-xs text-muted-foreground">{item.action}</p>
+                                            <p className="text-[10px] text-muted-foreground/60 mt-0.5">{item.time}</p>
+                                        </div>
                                     </div>
-                                    <div className="flex-1 min-w-0">
-                                        <p className="text-sm font-medium">{item.subject}</p>
-                                        <p className="text-xs text-muted-foreground">
-                                            {item.class} • {item.teacher}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </CardContent>
-                </Card>
+                                ))}
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="border-0 shadow-sm bg-primary/5 border-primary/10">
+                        <CardHeader className="pb-2">
+                            <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                                <ClipboardCheck className="h-4 w-4 text-primary" />
+                                Status Sistem
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-xs space-y-2">
+                            <div className="flex justify-between items-center">
+                                <span className="text-muted-foreground">Database</span>
+                                <span className="text-emerald-600 font-medium">Online</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span className="text-muted-foreground">Sesi Terakhir</span>
+                                <span>{new Date().toLocaleTimeString()}</span>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </div>
             </div>
         </div>
     );

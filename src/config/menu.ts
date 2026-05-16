@@ -267,6 +267,12 @@ export const menuGroups: MenuGroup[] = [
                 resource: "sertifikat",
             },
             {
+                title: "Profil",
+                href: "/profile",
+                icon: UserCog,
+                resource: "pengaturan",
+            },
+            {
                 title: "Pengaturan",
                 href: "/pengaturan",
                 icon: Settings,
@@ -307,4 +313,36 @@ export function getMenuForRole(role: Role): MenuGroup[] {
             };
         })
         .filter((group) => group.items.length > 0);
+}
+
+export function getResourceForPath(path: string): Resource | null {
+    // Exact match for direct items or children
+    for (const group of menuGroups) {
+        for (const item of group.items) {
+            if (item.href === path) return item.resource;
+            if (item.children) {
+                for (const child of item.children) {
+                    if (child.href === path) return child.resource;
+                }
+            }
+        }
+    }
+
+    // Prefix match for sub-pages (e.g. /siswa/123 matches /siswa)
+    // We sort by length descending to find the most specific match
+    const allPaths = menuGroups.flatMap(g => g.items.flatMap(i => [
+        { href: i.href, resource: i.resource },
+        ...(i.children?.map(c => ({ href: c.href, resource: c.resource })) || [])
+    ])).sort((a, b) => b.href.length - a.href.length);
+
+    for (const p of allPaths) {
+        if (p.href !== "/dashboard" && path.startsWith(p.href)) {
+            return p.resource;
+        }
+    }
+
+    // Default to dashboard if on dashboard
+    if (path === "/dashboard") return "dashboard";
+
+    return null;
 }

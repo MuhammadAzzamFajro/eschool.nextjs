@@ -4,8 +4,17 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { AuthProvider } from "@/providers/auth-provider";
+import type { User } from "@supabase/supabase-js";
+import type { Role } from "@/config/roles";
 
-export function Providers({ children }: { children: ReactNode }) {
+interface ProvidersProps {
+    children: ReactNode;
+    initialUser?: User | null;
+    initialRole?: Role | null;
+}
+
+export function Providers({ children, initialUser, initialRole }: ProvidersProps) {
     const [queryClient] = useState(
         () =>
             new QueryClient({
@@ -22,8 +31,10 @@ export function Providers({ children }: { children: ReactNode }) {
     return (
         <QueryClientProvider client={queryClient}>
             <TooltipProvider>
-                {children}
-                <Toaster position="top-right" richColors closeButton />
+                <AuthProvider initialUser={initialUser} initialRole={initialRole}>
+                    {children}
+                    <Toaster position="top-right" richColors closeButton />
+                </AuthProvider>
             </TooltipProvider>
         </QueryClientProvider>
     );

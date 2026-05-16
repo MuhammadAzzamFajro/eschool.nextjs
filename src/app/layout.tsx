@@ -12,8 +12,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    default: `${siteConfig.name} - Software Manajemen Sekolah`,
+    template: `${siteConfig.name} - %s`,
   },
   description: siteConfig.description,
   keywords: [...siteConfig.keywords],

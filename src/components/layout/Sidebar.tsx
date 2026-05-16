@@ -41,8 +41,10 @@ function SidebarContent({
     const { role } = useAuth();
     const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
 
-    // Get filtered menu based on role, fallback to all menus if no role
-    const filteredGroups = role ? getMenuForRole(role) : menuGroups;
+    // Get filtered menu based on role
+    // Fallback to 'staf' role if none assigned to ensure basic access
+    const effectiveRole = role || "staf";
+    const filteredGroups = getMenuForRole(effectiveRole);
 
     const toggleItem = (title: string) => {
         setOpenItems((prev) => ({ ...prev, [title]: !prev[title] }));
